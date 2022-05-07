@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { selectedModal } from './redux/actions/actionModal';
-
+import { URL } from './helpers/helper';
 const initialState = [
   {
     id: 1,
@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
   const getCharacters = async () => {
-    const movies = await axios.get('http://localhost:4000/heroes');
+    const movies = await axios.get(URL);
     console.log(movies.data);
     const characterData = movies.data;
     setCharacters(characterData);
