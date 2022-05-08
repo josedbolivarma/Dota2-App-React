@@ -90,17 +90,17 @@ function App() {
         </div>
         <div className={classes.content__filter}>
           <div className={classes.content__filterContent}>
-          <h2>ATRIBUTO</h2>
+          <h2 className={classes.content__filterTitle}>ATRIBUTO</h2>
           <div className={classes.content__filterBox}>
-            <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png' alt='Filter Icon' />
-            <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png' alt='Filter Icon' />
-            <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png' alt='Filter Icon' />
+            <div className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-str-active.png")'}}/>
+            <div className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png")'}}/>
+            <div className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-int-active.png"")'}}/>
           </div>
-          <h2>COMPLEJIDAD</h2>
-          <div className={classes.content__filterBox}>
-            <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png' alt='Filter Icon' />
-            <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png' alt='Filter Icon' />
-            <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png' alt='Filter Icon' />
+          <h2 className={classes.content__filterTitle}>COMPLEJIDAD</h2>
+          <div className={classes.content__filterBox} >
+            <div className={classes.content__filterIcon} />
+            <div className={classes.content__filterIcon} />
+            <div className={classes.content__filterIcon} />
           </div>
           <div className={classes.content__search}>
           <img className={classes.content__searchIcon} src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vector_search_icon.svg/1200px-Vector_search_icon.svg.png' alt='Search Icon'/>
@@ -167,7 +167,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '4rem'
   },
   content__title: {
-    fontSize: '4vw'
+    fontSize: '4vw',
+    letterSpacing: '1px'
   },
   content__text: {
     fontSize: '2vw',
@@ -204,6 +205,24 @@ const useStyles = makeStyles((theme) => ({
   content__searchIcon: {
     width: '40px',
     height: '40px'
+  },
+  content__filterTitle: {
+    color: '#7E8DA4',
+    fontSize: '1.3rem',
+    fontWeight: '400',
+    letterSpacing: '2px'
+  },
+  content__filterBox: {
+    display: 'flex'
+  },
+  content__filterIcon: {
+    width: '40px',
+    height: '40px',
+    backgroundImage: "url('https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-diamond.png')",
+    backgroundRepeat: 'no-repeat',
+    color: '#fff',
+    filter: 'brightness(0.5) saturate(0)',
+    cursor: 'pointer'
   }
 }))
 
