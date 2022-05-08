@@ -133,7 +133,22 @@ const Hero = () => {
                  
       <div className={classes.divider}>
         <div className={classes.divider__container}>
+          <div className={classes.divider__boxAvatar}>
           <img src={ modal.avatar}/>
+          <div className={classes.divider__points}>
+              <div className={classes.divider__poinstHealth}>500</div>
+              <div className={classes.divider__poinstMana}>291</div>
+          </div>
+          </div>
+
+          <div className={classes.divider__roles}>
+              <h2>ROLES</h2>
+          </div>
+
+          <div className={classes.divider__statistics}>
+              <h2>ATAQUE</h2>
+          </div>
+
         </div>
       </div>
       <div className={classes.hero__opacity}/>
@@ -153,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
     top: '-100%',
     left: '-20%',
     right: '-20%',
-    bottom: '-50%',
+    bottom: '-80%',
     backgroundColor: '#40494F',
     clipPath: 'polygon(100% 21%, 100% 59%, 61% 100%, 28% 100%)'
   },
@@ -161,11 +176,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '80%',
     margin: '0 auto',
-    // height: '700px',
-    // overflowY: 'hidden',
     overflowX: 'visible',
     zIndex: '1',
-    // backgroundColor: '#FFF',
   },
   // Principal Detail
   hero__principalDetail: {
@@ -275,7 +287,32 @@ const useStyles = makeStyles((theme) => ({
   },
   divider__container: {
     width: '94%',
-    margin: '0 auto'
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  divider__boxAvatar: {
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'center'
+  },
+  divider__poinstHealth: {
+    width: '100%',
+    backgroundColor: 'rgb(42,103,35)',
+    background: 'linear-gradient(90deg, rgba(42,103,35,1) 0%, rgba(62,138,42,1) 24%, rgba(92,188,51,1) 50%, rgba(119,234,59,1) 86%)',
+    padding: '.2rem 0',
+    color: '#FFF',
+    fontSize: '1.2rem',
+    fontWeight: 'bold'
+  },
+  divider__poinstMana: {
+    width: '100%',
+    backgroundColor: 'rgb(24,98,222)',
+    background: 'linear-gradient(90deg, rgba(24,98,222,1) 0%, rgba(47,135,230,1) 24%, rgba(77,184,241,1) 50%, rgba(111,238,252,1) 86%)',
+    padding: '.2rem 0',
+    color: '#FFF',
+    fontSize: '1.2rem',
+    fontWeight: 'bold'
   }
  
 }))
