@@ -50,30 +50,7 @@ const Hero = () => {
 
     const { modal } = useSelector(store => store.modal);
     console.log(modal, 'MODALLLL');
-    
-    // const { id } = useParams();
-    // console.log('EJECUCION 1');
-
-     useEffect(() => {
-    // const getById = async () => {
-    //   await axios.get(URL + id)
-    //     .then((resp) => {
-    //       setHero(resp.data);
-    //       console.log(resp.data);
-    //       console.log('EJECUCION 2');
-
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error: ', error);
-    //     })
-    // }
-
-    // getById();
-    // id
-  }, [])
-
   
-
   return (
     <div className={classes.hero}>
       <div className={classes.hero__container}>
@@ -84,7 +61,7 @@ const Hero = () => {
         <Typography className={classes.hero__TextDescription}>Si Anti-Mage tiene la posibilidad de hacerse fuerte, pocos pueden parar sus ataques. Quemando el maná de sus enemigos con cada golpe o teletransportándose a distancias cortas para escapar de una emboscada, arrinconarlo es un desafío para cualquier enemigo.</Typography>
         <a href='#' className={classes.hero__textLinkHistory}>Leer historia completa</a>
         <div className={classes.hero__boxSkillsContainer}>
-      
+
          
         </div>
           </div>
@@ -111,7 +88,7 @@ const Hero = () => {
           <h3  className={classes.hero__TextDescription} style={{textTransform: 'uppercase'}}>{ modal.attack_type }</h3>
           </div>
           <div>
-          <h2 className={classes.hero__subtitleTwo}>COMPLEJIDAD</h2>
+          <h2 className={classes.hero__subtitleTwo}>ESTILO</h2>
           <h3 className={classes.hero__TextDescription} style={{textTransform: 'uppercase'}}>{ modal.roles[0] }</h3>
           </div>
           </div>
@@ -136,19 +113,107 @@ const Hero = () => {
           <div className={classes.divider__boxAvatar}>
           <img src={ modal.avatar}/>
           <div className={classes.divider__points}>
-              <div className={classes.divider__poinstHealth}>500</div>
-              <div className={classes.divider__poinstMana}>291</div>
+              <div className={classes.divider__poinstHealth}>
+                <h4 className={classes.divider__basePoint}>{ modal.base_health }</h4>
+                <span className={classes.divider__point__regen}>+{ modal.base_health_regen }</span>
+              </div>
+              <div className={classes.divider__poinstMana}>
+              <h4 className={classes.divider__basePoint}>{ modal.base_mana }</h4>
+              <span className={classes.divider__point__regen}>+{ modal.base_mana_regen }</span>
+              </div>
           </div>
           </div>
 
           <div className={classes.divider__roles}>
-              <h2>ROLES</h2>
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Carry</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Apoyo</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Nuker</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            {/*  */}
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Incapacitador</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Jungla</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Resistente</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+        {/*  */}
+
+        <div>
+              <h2 className={classes.divider__statisticsTitle}>Evasivo</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Presionador</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
+            <div>
+              <h2 className={classes.divider__statisticsTitle}>Iniciador</h2>
+              <progress className={classes.progress} value={Math.floor(Math.random() * 100)} min="0" max="100"></progress>
+            </div>
+
           </div>
 
           <div className={classes.divider__statistics}>
+              <div className={classes.divider__statisticsBox}>
               <h2>ATAQUE</h2>
-          </div>
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_damage.png'/></span>{modal.base_attack_min} - {modal.base_attack_max}</h3>
 
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_attack_time.png'/></span>{modal.attack_rate}</h3>
+
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_attack_range.png'/></span>{modal.attack_range}</h3>
+
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_projectile_speed.png'/></span>{modal.projectile_speed}</h3>
+              </div>
+
+              <div className={classes.divider__statisticsBox}>
+              <h2>DEFENSA</h2>
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_armor.png'/></span>{modal.base_armor}</h3>
+
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_magic_resist.png'/></span>{modal.base_mr}%</h3>
+              {/* <progress value={40} min="0" max="10"></progress> */}
+              </div>
+
+              <div className={classes.divider__statisticsBox}>
+              <h2>MOVILIDAD</h2>
+              <h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_movement_speed.png'/></span>{modal.move_speed}</h3>
+
+<h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_turn_rate.png'/></span>{modal.attack_rate}</h3>
+
+<h3><span><img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react//heroes/stats/icon_vision.png'/></span>{modal.base_health}</h3>
+              </div>
+          </div>
+<div>
+  <h2 className={classes.divider__title}>ATRIBUTOS</h2>
+</div>
+<div>
+  <h2 className={classes.divider__title}>ROLES</h2>
+</div>
+<div>
+  <h2 className={classes.divider__title}>ESTADÍSTICAS</h2>
+</div>
         </div>
       </div>
       <div className={classes.hero__opacity}/>
@@ -288,8 +353,9 @@ const useStyles = makeStyles((theme) => ({
   divider__container: {
     width: '94%',
     margin: '0 auto',
-    display: 'flex',
-    justifyContent: 'space-between'
+    display: 'grid',
+    gridTemplateColumns: '.5fr 1fr 1fr',
+    gap: theme.spacing(4)
   },
   divider__boxAvatar: {
     display: 'flex',
@@ -298,21 +364,86 @@ const useStyles = makeStyles((theme) => ({
   },
   divider__poinstHealth: {
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
     backgroundColor: 'rgb(42,103,35)',
     background: 'linear-gradient(90deg, rgba(42,103,35,1) 0%, rgba(62,138,42,1) 24%, rgba(92,188,51,1) 50%, rgba(119,234,59,1) 86%)',
     padding: '.2rem 0',
     color: '#FFF',
     fontSize: '1.2rem',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   divider__poinstMana: {
     width: '100%',
     backgroundColor: 'rgb(24,98,222)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     background: 'linear-gradient(90deg, rgba(24,98,222,1) 0%, rgba(47,135,230,1) 24%, rgba(77,184,241,1) 50%, rgba(111,238,252,1) 86%)',
     padding: '.2rem 0',
     color: '#FFF',
     fontSize: '1.2rem',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+  },
+  divider__point__regen: {
+    paddingRight: '1rem',
+    paddingLeft: '3rem',
+    width: '80px',
+  },
+  divider__basePoint: {
+    flex: .6,
+    textAlign: 'right'
+  },
+  //BOX 3
+  divider__statistics: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: theme.spacing(2),
+    color: '#FFF',
+
+  },
+  // Progress Bar
+  progress: {
+    backgroundColor: 'blue',
+    width: '100%',
+    height: '.6rem',
+    zIndex: '10000',
+    border: '1px solid #000',
+    "&::-webkit-progress-bar": {
+      backgroundColor: '#1C1F20'
+    },
+    "&::-webkit-progress-value": {
+      backgroundColor: '#FFFFFF',
+      boxShadow: '0px 0px 10px #427ed1, 0px 0px 10px #427ed1'
+    }
+  },
+  divider__roles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: theme.spacing(2),
+    textAlign: 'center'
+  },
+  divider__title: {
+    textAlign: 'center',
+    fontSize: '1.2rem',
+    textTransform: 'uppercase',
+    letterSpacing: '2px',
+    textShadow: '1px 1px 2px #000',
+    marginTop: '12px',
+    color: '#969696'
+  },
+  divider__statisticsTitle: {
+    color: '#FFF',
+    textTransform: 'capitalize'
+  },
+  divider__statisticsBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(1),
+    "& h3": {
+      display: 'flex',
+      alignItems: 'start',
+      gap: theme.spacing(.8)
+    }
   }
- 
 }))
