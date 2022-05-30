@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Material UI
 import { makeStyles } from '@material-ui/core';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { selectedModal } from './redux/actions/actionModal';
 import { URL } from './helpers/helper';
@@ -53,6 +53,8 @@ const initialState = [
 function App() {
   const classes = useStyles();
  const [characters, setCharacters] = useState(initialState);
+ const [atributte, setAtributte] = useState('all');
+ const [value, setValue] = useState('');
 
   useEffect(() => {
   const getCharacters = async () => {
@@ -71,6 +73,10 @@ function App() {
     navigate('/hero');
   }
 
+  const handleInputChange = e => {
+    setValue(e.target.value);
+  } 
+
   return (
     <div className="App">
       <header className={classes.content}>
@@ -83,37 +89,49 @@ function App() {
           <div className={classes.content__filterContent}>
           <h2 className={classes.content__filterTitle}>ATRIBUTO</h2>
           <div className={classes.content__filterBox}>
-            <div className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-str-active.png")'}}/>
-            <div className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png")'}}/>
-            <div className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-int-active.png"")'}}/>
+            <div onClick={() => setAtributte('str')} className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-str-active.png")'}}/>
+            <div onClick={() => setAtributte('agi')} className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-agi-active.png")'}}/>
+            <div onClick={() => setAtributte('int')} className={classes.content__filterIcon} style={{backgroundImage: 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-int-active.png"")'}}/>
           </div>
-          <h2 className={classes.content__filterTitle}>COMPLEJIDAD</h2>
+          {/* <h2 className={classes.content__filterTitle}>COMPLEJIDAD</h2>
           <div className={classes.content__filterBox} >
             <div className={classes.content__filterIcon} />
             <div className={classes.content__filterIcon} />
             <div className={classes.content__filterIcon} />
-          </div>
+          </div> */}
           <div className={classes.content__search}>
           <img className={classes.content__searchIcon} src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vector_search_icon.svg/1200px-Vector_search_icon.svg.png' alt='Search Icon'/>
-          <input type='text' className={classes.content__searchInput}/>
+          <input type='text' 
+          className={classes.content__searchInput}
+          onChange={handleInputChange}
+          />
           </div>
           </div>
         </div>
         <div className={classes.grid}>
-        {/* <video className={classes.image} autoPlay controls loop playsInline muted poster={characters.poster}><source type="video/webm" src='https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/bane.webm'/><img src={characters.image} /></video> */}
 
       {
-        // characters.map((item) => (
-        // ))
-        characters.map((item) => (
-          <div key={item.id} >
-            
-            {/* <Link to={`hero/${item.id}`}> */}
-            <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
-            {/* </Link> */}
-          </div>
+       (atributte === 'all')? 
+       characters
+       .filter((item) => item.localized_name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+       .map((item) => (
+        <div key={item.id} >
+          
+          {/* <Link to={`hero/${item.id}`}> */}
+          <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
+          {/* </Link> */}
+        </div>
 
-        ))
+      )) 
+      : 
+      characters
+      .filter((item) => item.primary_attr === atributte)
+      .filter((item) => item.localized_name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+      .map((item) => (
+        <div key={item.id} >
+          <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
+        </div>
+      ))
       }
 </div>
       </header>
@@ -191,7 +209,8 @@ const useStyles = makeStyles((theme) => ({
     padding: '.8rem .4rem',
     outline: 'none',
     border: 'none',
-    color: '#FFF'
+    color: '#FFF',
+    fontSize: '2rem'
   },
   content__searchIcon: {
     width: '40px',
