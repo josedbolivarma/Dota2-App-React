@@ -160,6 +160,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gap: theme.spacing(3),
+    [theme.breakpoints.down('sm')]: {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    }
   },
   gridItem: {
     width: '100%',
@@ -221,7 +224,8 @@ const useStyles = makeStyles((theme) => ({
     outline: 'none',
     border: 'none',
     color: '#FFF',
-    fontSize: '2rem'
+    fontSize: '2rem',
+    width: '100%'
   },
   content__searchIcon: {
     width: '40px',
