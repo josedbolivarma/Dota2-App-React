@@ -117,11 +117,14 @@ function App() {
        .filter((item) => item.localized_name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
        .map((item) => (
         <Zoom>
-        <div key={item.id} >
+        <div className={classes.grid__item} key={item.id} >
           
           {/* <Link to={`hero/${item.id}`}> */}
           <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
           {/* </Link> */}
+          <div className={classes.grid__itemContent}>
+          <h2>{item.localized_name}</h2>
+          </div>
         </div>
         </Zoom>
       )) 
@@ -131,8 +134,11 @@ function App() {
       .filter((item) => item.localized_name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
       .map((item) => (
         <Zoom>
-        <div key={item.id} >
+        <div className={classes.grid__item} key={item.id} >
           <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
+          <div className={classes.grid__itemContent}>
+          <h2>{item.localized_name}</h2>
+          </div>
         </div>
         </Zoom>
 
@@ -238,6 +244,38 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     filter: 'brightness(0.5) saturate(0)',
     cursor: 'pointer'
+  },
+  grid__item: {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    cursor: 'pointer',
+    transition: 'all .5s',
+    '&:hover': {
+      zIndex: 1000,
+      '& img': {
+      transform: 'scale(1.3)',
+      transition: 'all .5s',
+      },
+      '& div': {
+        bottom: '0',
+        opacity: '1',
+      }
+    }
+  },
+  grid__itemContent: {
+    position: 'absolute',
+    textAlign: 'left',
+    color: '#FFF',
+    left: '5%',
+    bottom: '-15%',
+    opacity: '0',
+    transition: 'all .1s ease-in-out',
+    '& h2': {
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+      fontWeight: '500'
+    }   
   }
 }))
 
