@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { selectedModal } from './redux/actions/actionModal';
 import { URL } from './helpers/helper';
+import { Zoom } from 'react-reveal';
 const initialState = [
   {
     id: 1,
@@ -52,7 +53,7 @@ const initialState = [
 
 function App() {
   const classes = useStyles();
- const [characters, setCharacters] = useState(initialState);
+ const [characters, setCharacters] = useState([]);
  const [atributte, setAtributte] = useState('all');
  const [value, setValue] = useState('');
 
@@ -115,22 +116,26 @@ function App() {
        characters
        .filter((item) => item.localized_name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
        .map((item) => (
+        <Zoom>
         <div key={item.id} >
           
           {/* <Link to={`hero/${item.id}`}> */}
           <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
           {/* </Link> */}
         </div>
-
+        </Zoom>
       )) 
       : 
       characters
       .filter((item) => item.primary_attr === atributte)
       .filter((item) => item.localized_name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
       .map((item) => (
+        <Zoom>
         <div key={item.id} >
           <img onClick={() => selectHero(item)} className={classes.gridItem} src={item.avatar} />
         </div>
+        </Zoom>
+
       ))
       }
 </div>
