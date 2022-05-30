@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#000',
         padding:'2rem 0',
         color: '#FFF',
-        zIndex: '1000000'
+        zIndex: 10000
     },
     footer__container: {
         display: 'flex',

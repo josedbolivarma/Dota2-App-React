@@ -53,24 +53,15 @@ const initialState = [
 function App() {
   const classes = useStyles();
  const [characters, setCharacters] = useState(initialState);
-//  const [item, setItem] = useState({});
-
-  console.log(characters);
-
-
 
   useEffect(() => {
   const getCharacters = async () => {
     const movies = await axios.get(URL);
-    console.log(movies.data);
     const characterData = movies.data;
-    setCharacters(characterData);
-    // const filter = moviesData.filter(item => item.avatar);
-    
+    setCharacters(characterData);    
    }
     getCharacters();
   }, [])
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

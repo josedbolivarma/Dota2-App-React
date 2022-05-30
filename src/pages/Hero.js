@@ -1,8 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
-import zIndex from '@material-ui/core/styles/zIndex';
+import HeroPaginations from '../containers/hero/HeroPaginations';
 
 const initialState = {
     id: 1,
@@ -49,7 +48,6 @@ const Hero = () => {
     // const [hero, setHero] = useState(initialState);
 
     const { modal } = useSelector(store => store.modal);
-    console.log(modal, 'MODALLLL');
   
   return (
     <div className={classes.hero}>
@@ -216,6 +214,7 @@ const Hero = () => {
 </div>
         </div>
       </div>
+      <HeroPaginations id={modal.id} />
       <div className={classes.hero__opacity}/>
     </div>
   )
