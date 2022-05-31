@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
     header__links: {
         display: 'flex',
-        gap: theme.spacing(8)
+        gap: theme.spacing(8),
     },
     header__link: {
         fontSize: '2rem',
