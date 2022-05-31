@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     header__link: {
         fontSize: '2rem',
         color: '#D8D9DA',
-        fontWeight: '500'
+        fontWeight: '500',
+        textDecoration: 'none'
     }
 }))
