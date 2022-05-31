@@ -108,8 +108,10 @@ const Hero = () => {
                  
       <div className={classes.divider}>
         <div className={classes.divider__container}>
+          <div className={classes.divider__boxAvatarContainer}>
           <div className={classes.divider__boxAvatar}>
           <img src={ modal.avatar}/>
+          
           <div className={classes.divider__points}>
               <div className={classes.divider__poinstHealth}>
                 <h4 className={classes.divider__basePoint}>{ modal.base_health }</h4>
@@ -119,7 +121,31 @@ const Hero = () => {
               <h4 className={classes.divider__basePoint}>{ modal.base_mana }</h4>
               <span className={classes.divider__point__regen}>+{ modal.base_mana_regen }</span>
               </div>
+              
+            </div>
           </div>
+          {/* POINTS RULES */}
+          <div className={classes.divider__boxAvatarContent}>
+              <div className={classes.divider__boxAvatarContentBox}>
+                <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_strength.png'
+                alt='Strength Icon'
+                />
+                <h2>20 <span>+1.9</span></h2>
+              </div>
+              <div className={classes.divider__boxAvatarContentBox}>
+              <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_agility.png'
+                alt='Agility Icon'
+                />
+                <h2>20 <span>+1.9</span></h2>
+              </div>
+              <div className={classes.divider__boxAvatarContentBox}>
+              <img src='https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_intelligence.png'
+                alt='Intelligence Icon'
+                />
+                <h2>20 <span>+1.9</span></h2>
+              </div>
+          </div>
+          {/* POINTS RULES */}
           </div>
 
           <div className={classes.divider__roles}>
@@ -253,7 +279,6 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'hidden',
     overflowX: 'hidden',
     // backgroundColor: '#FFF',
-
   },
   hero__principalTextBox: {
     width: '100%',
@@ -262,13 +287,20 @@ const useStyles = makeStyles((theme) => ({
     width: '500px',
     gap: theme.spacing(2),
     marginTop: '4rem',
-    zIndex: '1000'
+    zIndex: '1000',
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '28rem'
+    }
     // flex: '1',
   },
   hero__animation: {
     position: 'absolute',
     top: '-240px',
     right: '-280px',
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '8rem',
+      right: '5%',
+    }
   },
   hero__video: {
     width: '80vw'
@@ -353,13 +385,34 @@ const useStyles = makeStyles((theme) => ({
     width: '94%',
     margin: '0 auto',
     display: 'grid',
-    gridTemplateColumns: '.5fr 1fr 1fr',
-    gap: theme.spacing(4)
+    gridTemplateColumns: '.9fr 1fr 1fr',
+    gap: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      gridTemplateColumns: '1fr',
+    }
   },
   divider__boxAvatar: {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center'
+  },
+  divider__boxAvatarContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(2),
+    '& h2': {
+      fontSize: '2.2rem',
+      color: '#FFF',
+      fontWeight: '380',
+      '& span': {
+        fontSize: '1.4rem',
+        color: '#969696'
+      }
+    }
+  },
+  divider__boxAvatarContainer: {
+    display: 'flex',
+    gap: theme.spacing(2)
   },
   divider__poinstHealth: {
     width: '100%',
@@ -444,5 +497,11 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'start',
       gap: theme.spacing(.8)
     }
+  },
+  divider__boxAvatarContentBox: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(1)
   }
+  
 }))
