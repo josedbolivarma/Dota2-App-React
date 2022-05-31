@@ -289,7 +289,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '4rem',
     zIndex: '1000',
     [theme.breakpoints.down('sm')]: {
-      marginTop: '28rem'
+      marginTop: '28rem',
+      width: '100%',
+
     }
     // flex: '1',
   },
