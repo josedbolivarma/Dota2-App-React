@@ -348,6 +348,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     display: 'flex',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column'
+    }
   },
   hero__boxHabilitiesText: {
     display: 'flex',

@@ -13,20 +13,14 @@ const Header = () => {
             alt='Header Icon'
             />
             <div className={classes.header__links}>
-            <h2 className={classes.header__link}>JUEGO</h2>
             <Link to='/'>
             <h2 className={classes.header__link}>HÉROES</h2>
             </Link>
-            <h2 className={classes.header__link}>NOTICIAS</h2>
-            <h2 className={classes.header__link}>E-SPORTS</h2>
             </div>
-            <div>
+            {/* <div>
                 <h2>INICIAR SESIÓN</h2>
                 <p>SELECCIONA UN IDIOMA</p>
-            </div>
-            <div>
-                <h2>JUEGA GRATIS</h2>
-            </div>
+            </div> */}
 
         </div>
     </div>
